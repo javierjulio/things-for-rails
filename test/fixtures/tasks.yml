@@ -1,0 +1,28 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: Task 1
+  note: testing a sample note
+  completed: true
+  due_date: <%= Date.today.to_date %>
+  tags: work
+
+two:
+  title: Task 2
+  note: 
+  completed: false
+  due_date: 2012-02-01
+  tags: personal
+
+three:
+  title: Task 3
+  note: 
+  completed: false
+  due_date: 2013-10-15
+  tags: personal, home
+
+four:
+  title: Task 4
+  note: 
+  completed: true
+  due_date: 

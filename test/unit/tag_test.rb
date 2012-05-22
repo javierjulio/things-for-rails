@@ -2,14 +2,14 @@ require 'test_helper'
 
 class TagTest < ActiveSupport::TestCase
   
-  test "should not save tag without title" do
-    tag = Tag.new
-    assert !tag.save, "Saved the tag without a title."
-  end
+  should validate_presence_of(:title)
   
-  test "should not save tag without unique title" do
-    tag = Tag.new :title => tags(:personal).title
-    assert !tag.save, "Saved a duplicate tag."
+  context "an existing tag" do
+    setup do
+      @title = FactoryGirl.create(:tag)
+    end
+    
+    should validate_uniqueness_of(:title)
   end
   
 end

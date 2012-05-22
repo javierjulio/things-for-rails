@@ -1,6 +1,17 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'capybara/rails'
+require 'shoulda'
+
+class ActionDispatch::IntegrationTest
+  include Capybara::DSL
+  
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+  end
+end
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.

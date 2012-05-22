@@ -5,7 +5,8 @@ class Task < ActiveRecord::Base
   scope :due_today, lambda { where("due_date = ?", Date.today.to_date ) }
   scope :due_till_today, lambda { where("due_date IS NULL OR due_date <= ?", Date.today.to_date ) }
   
-  scope :tagged_with_any, lambda { |*tags| joins(:tags).where("tags.id IN (?)", tags.map(&:id)).group("tasks.id").having("COUNT(tags.title) = 2") }
+  #scope :tagged_with_any, lambda { |*tags| joins(:tags).where("tags.id IN (?)", tags.map(&:id)).group("tasks.id").having("COUNT(tags.title) = 2") }
+  scope :tagged_with_any, lambda { |tags| joins(:tags).where("tags.id IN (?)", tags.map(&:id)).group("tasks.id").having("COUNT(tags.title) = 2") }
 
   # The following query will match all tags for a task so task must have all specified 
   # tags to be returned. This is tagged_with_all scope.

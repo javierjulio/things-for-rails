@@ -11,7 +11,7 @@ class TaskTest < ActiveSupport::TestCase
     
     tasks = Task.due_today
     
-    assert tasks.length == 1
+    assert tasks.length == 1, "#{tasks.length} tasks returned but expected 1"
     
     tasks.each do |t|
       assert_equal t.due_date, Date.today
@@ -26,7 +26,7 @@ class TaskTest < ActiveSupport::TestCase
     
     tasks = Task.due_till_today
     
-    assert tasks.length == 3
+    assert tasks.length == 3, "#{tasks.length} tasks returned but expected 3"
     
     tasks.each do |t|
       assert(t.due_date.nil? || t.due_date <= Date.today, "Retrieved a future task.")
@@ -41,7 +41,7 @@ class TaskTest < ActiveSupport::TestCase
     
     tasks = Task.tagged_with_any tags
     
-    assert tasks.length == 1
+    assert tasks.length == 1, "#{tasks.length} tasks returned but expected 1"
     
     tasks.each do |t|
       assert_equal t.tags.map(&:id).sort, tags.map(&:id).sort

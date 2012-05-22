@@ -1,12 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+ruby '1.9.3'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.2.3'
 
 gem 'sqlite3'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,10 +35,13 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :development do
+group :development, :test do
   gem 'awesome_print'
+  gem 'factory_girl_rails'
 end
 
 group :test do
-  gem 'awesome_print'
+  gem 'capybara'
+  gem 'mocha'
+  gem 'shoulda'
 end

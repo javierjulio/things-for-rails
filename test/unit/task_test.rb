@@ -2,10 +2,7 @@ require 'test_helper'
 
 class TaskTest < ActiveSupport::TestCase
   
-  test "should not save task without title" do
-    task = Task.new
-    assert !task.save, "Saved the task without a title."
-  end
+  should validate_presence_of(:title)
   
   test "should return all tasks due today" do
     tasks = Task.due_today

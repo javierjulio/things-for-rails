@@ -2,8 +2,8 @@ class Task < ActiveRecord::Base
   
   has_and_belongs_to_many :tags
   
-  scope :due_today, lambda { where("due_date = ?", Time.zone.now.to_date ) }
-  scope :due_till_today, lambda { where("due_date IS NULL OR due_date <= ?", Time.zone.now.to_date ) }
+  scope :due_today, lambda { where("due_date = ?", Date.today.to_date ) }
+  scope :due_till_today, lambda { where("due_date IS NULL OR due_date <= ?", Date.today.to_date ) }
   
   scope :tagged_with_any, lambda { |*tags| joins(:tags).where("tags.id IN (?)", tags.map(&:id)).group("tasks.id").having("COUNT(tags.title) = 2") }
 
